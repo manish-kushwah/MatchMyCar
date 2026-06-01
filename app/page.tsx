@@ -63,7 +63,7 @@ export default function Home() {
         className={`relative rounded-2xl overflow-hidden min-h-[480px] flex items-center mb-16 p-8 md:p-12 transition-all duration-300 ${
           isSporty
             ? 'bg-[#121212] border border-[#2C2C2E] shadow-[inset_0_0_80px_rgba(255,83,91,0.08)]'
-            : 'bg-gradient-to-br from-slate-50 to-blue-50/50 border border-slate-200'
+            : 'bg-linear-to-br from-slate-50 to-blue-50/50 border border-slate-200'
         }`}
       >
         {isSporty && (
@@ -120,7 +120,7 @@ export default function Home() {
               )}
             </div>
           </div>
-          <div className="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-[4/3] shadow-md border border-slate-200/50">
+          <div className="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-4/3 shadow-md border border-slate-200/50">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               alt="Modern luxury car interior"
@@ -153,7 +153,7 @@ export default function Home() {
               <select
                 value={budget}
                 onChange={(e) => setBudget(e.target.value)}
-                className={`w-full h-11 border rounded-lg px-3 text-sm outline-none transition-colors ${
+                className={`w-full h-11 border rounded-lg px-3 text-sm outline-none transition-colors cursor-pointer ${
                   isSporty
                     ? 'bg-[#2C2C2E] border-none text-white focus:ring-1 focus:ring-[#ff535b]'
                     : 'bg-slate-50 border-slate-200 text-slate-700 focus:border-blue-500'
@@ -173,7 +173,7 @@ export default function Home() {
               <select
                 value={fuel}
                 onChange={(e) => setFuel(e.target.value)}
-                className={`w-full h-11 border rounded-lg px-3 text-sm outline-none transition-colors ${
+                className={`w-full h-11 border rounded-lg px-3 text-sm outline-none transition-colors cursor-pointer ${
                   isSporty
                     ? 'bg-[#2C2C2E] border-none text-white focus:ring-1 focus:ring-[#ff535b]'
                     : 'bg-slate-50 border-slate-200 text-slate-700 focus:border-blue-500'
@@ -193,7 +193,7 @@ export default function Home() {
               <select
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
-                className={`w-full h-11 border rounded-lg px-3 text-sm outline-none transition-colors ${
+                className={`w-full h-11 border rounded-lg px-3 text-sm outline-none transition-colors cursor-pointer ${
                   isSporty
                     ? 'bg-[#2C2C2E] border-none text-white focus:ring-1 focus:ring-[#ff535b]'
                     : 'bg-slate-50 border-slate-200 text-slate-700 focus:border-blue-500'
