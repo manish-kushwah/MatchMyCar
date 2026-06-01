@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseServer } from '@/lib/supabase/server';
+import { supabaseClient } from '@/lib/supabase/client';
 import { ApiResponse } from '@/types';
 
 export async function POST(
@@ -32,7 +32,7 @@ export async function POST(
 
     // Database attempt
     try {
-      const { error } = await supabaseServer
+      const { error } = await supabaseClient
         .from('inquiries')
         .insert([{
           id: inquiryId,
