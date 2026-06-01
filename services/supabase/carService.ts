@@ -1,4 +1,4 @@
-import { supabaseServer } from '@/lib/supabase/server';
+import { supabaseClient } from '@/lib/supabase/client';
 import { Car, FilterState, FuelType, BodyType, TransmissionType, PaginationParams, SortParams } from '@/types';
 
 export class CarService {
@@ -52,7 +52,7 @@ export class CarService {
     const fromIndex = (page - 1) * limit;
     const toIndex = fromIndex + limit - 1;
 
-    let query = supabaseServer
+    let query = supabaseClient
       .from('vcars')
       .select('*', { count: 'exact' });
 
@@ -116,7 +116,7 @@ export class CarService {
       return null;
     }
 
-    const { data, error } = await supabaseServer
+    const { data, error } = await supabaseClient
       .from('vcars')
       .select('*')
       .eq('id', numericId)
@@ -144,7 +144,7 @@ export class CarService {
       return [];
     }
 
-    const { data, error } = await supabaseServer
+    const { data, error } = await supabaseClient
       .from('vcars')
       .select('*')
       .in('id', numericIds);

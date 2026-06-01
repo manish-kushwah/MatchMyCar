@@ -1,28 +1,26 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/store';
-import { toggleTheme } from '@/store/slices/themeSlice';
-import { FiLayers, FiMenu, FiSun, FiZap } from 'react-icons/fi';
-import { Badge } from 'antd';
+import React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "@/store";
+import { toggleTheme } from "@/store/slices/themeSlice";
+import { FiSun, FiZap, FiUser } from "react-icons/fi";
 
 export function Navbar() {
   const pathname = usePathname();
   const dispatch = useDispatch();
-  const comparedCars = useSelector((state: RootState) => state.compare.comparedCars);
-  const themeMode = useSelector((state: RootState) => state.theme?.mode || 'standard');
+  const themeMode = useSelector((state: RootState) => state.theme?.mode || "standard");
 
-  const isSporty = themeMode === 'sporty';
+  const isSporty = themeMode === "sporty";
 
   return (
     <header
       className={`sticky top-0 z-40 w-full border-b transition-colors duration-300 ${
         isSporty
-          ? 'border-[#2C2C2E] bg-[#121212]/90 text-[#e2e2e2]'
-          : 'border-slate-200 bg-white/90 text-slate-800'
+          ? "border-[#2C2C2E] bg-[#121212]/90 text-[#e2e2e2]"
+          : "border-slate-200 bg-white/90 text-slate-800"
       } backdrop-blur`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -30,12 +28,14 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2 font-bold text-xl">
           <span
             className={`p-1.5 rounded-lg text-sm tracking-wide font-black transition-colors ${
-              isSporty ? 'bg-[#ff535b] text-white' : 'bg-blue-600 text-white'
+              isSporty ? "bg-[#ff535b] text-white" : "bg-blue-600 text-white"
             }`}
           >
             MMC
           </span>
-          <span className={`transition-all ${isSporty ? 'italic text-white' : 'text-slate-900 font-bold'}`}>
+          <span
+            className={`transition-all ${isSporty ? "italic text-white" : "text-slate-900 font-bold"}`}
+          >
             MatchMyCar
           </span>
         </Link>
@@ -45,9 +45,13 @@ export function Navbar() {
           <Link
             href="/"
             className={`text-sm font-medium transition-colors ${
-              pathname === '/'
-                ? isSporty ? 'text-[#ff535b]' : 'text-blue-600'
-                : isSporty ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-blue-600'
+              pathname === "/"
+                ? isSporty
+                  ? "text-[#ff535b]"
+                  : "text-blue-600"
+                : isSporty
+                  ? "text-slate-400 hover:text-white"
+                  : "text-slate-600 hover:text-blue-600"
             }`}
           >
             Home
@@ -55,9 +59,13 @@ export function Navbar() {
           <Link
             href="/cars"
             className={`text-sm font-medium transition-colors ${
-              pathname.startsWith('/cars')
-                ? isSporty ? 'text-[#ff535b]' : 'text-blue-600'
-                : isSporty ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-blue-600'
+              pathname.startsWith("/cars")
+                ? isSporty
+                  ? "text-[#ff535b]"
+                  : "text-blue-600"
+                : isSporty
+                  ? "text-slate-400 hover:text-white"
+                  : "text-slate-600 hover:text-blue-600"
             }`}
           >
             Browse Cars
@@ -65,9 +73,13 @@ export function Navbar() {
           <Link
             href="/compare"
             className={`text-sm font-medium transition-colors ${
-              pathname === '/compare'
-                ? isSporty ? 'text-[#ff535b]' : 'text-blue-600'
-                : isSporty ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-blue-600'
+              pathname === "/compare"
+                ? isSporty
+                  ? "text-[#ff535b]"
+                  : "text-blue-600"
+                : isSporty
+                  ? "text-slate-400 hover:text-white"
+                  : "text-slate-600 hover:text-blue-600"
             }`}
           >
             Comparison Panel
@@ -79,11 +91,11 @@ export function Navbar() {
           {/* Theme Toggle Button */}
           <button
             onClick={() => dispatch(toggleTheme())}
-            title={isSporty ? 'Switch to Standard Theme' : 'Switch to Sporty Theme'}
+            title={isSporty ? "Switch to Standard Theme" : "Switch to Sporty Theme"}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
               isSporty
-                ? 'border-[#ff535b]/30 bg-[#ff535b]/10 text-[#ff535b] hover:bg-[#ff535b]/20 shadow-[0_0_8px_rgba(255,83,91,0.2)]'
-                : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:text-blue-600'
+                ? "border-[#ff535b]/30 bg-[#ff535b]/10 text-[#ff535b] hover:bg-[#ff535b]/20 shadow-[0_0_8px_rgba(255,83,91,0.2)]"
+                : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:text-blue-600"
             }`}
           >
             {isSporty ? (
@@ -99,23 +111,23 @@ export function Navbar() {
             )}
           </button>
 
-          {/* Compare Badge */}
-          <Link
-            href="/compare"
-            className={`relative p-2 transition-colors ${
-              isSporty ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-blue-600'
-            }`}
-          >
-            <Badge count={comparedCars.length} size="small" color={isSporty ? '#ff535b' : '#2563eb'}>
-              <FiLayers className="h-5 w-5" />
-            </Badge>
-          </Link>
+          {/* Login Button */}
           <button
-            className={`p-2 md:hidden transition-colors ${
-              isSporty ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-blue-600'
+            title="Login"
+            className={`relative p-2 transition-colors cursor-pointer ${
+              isSporty ? "text-slate-400 hover:text-white" : "text-slate-600 hover:text-blue-600"
             }`}
           >
-            <FiMenu className="h-5 w-5" />
+            <div
+              className={`flex items-center gap-1.5 rounded-lg border px-3 py-1 text-sm font-medium transition-all ${
+                isSporty
+                  ? "border-[#ff535b]/30 bg-[#ff535b]/10 text-[#ff535b] hover:bg-[#ff535b]/20"
+                  : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:text-blue-600"
+              }`}
+            >
+              <FiUser className="h-4 w-4" />
+              <span className="hidden sm:inline">Login</span>
+            </div>
           </button>
         </div>
       </div>
